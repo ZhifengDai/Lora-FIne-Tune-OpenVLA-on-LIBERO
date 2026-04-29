@@ -126,7 +126,7 @@ Large files such as model weights, RLDS datasets, checkpoints, rollout videos, a
 
 During reproduction, I encountered and fixed several practical issues.
 
-### 1. FlashAttention2 import error
+### FlashAttention2 import error
 
 OpenVLA evaluation attempted to load the model with FlashAttention2 enabled, but the environment did not have `flash_attn` installed.
 
