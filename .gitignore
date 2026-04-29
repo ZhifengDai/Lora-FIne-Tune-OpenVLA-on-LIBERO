@@ -1,0 +1,26 @@
+.DS_Store
+
+# Large model/data/checkpoint files
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.sif
+*.tar.gz
+*.zip
+
+# Datasets / models / caches
+rlds_datasets/
+libero_datasets/
+models/
+hf_cache/
+tmp/
+wandb/
+__pycache__/
+*.pyc
+
+# Videos
+*.mp4
+*.avi
+*.mov

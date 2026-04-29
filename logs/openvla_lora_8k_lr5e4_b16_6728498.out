@@ -1,0 +1,114 @@
+Fine-tuning OpenVLA Model `/projects/p33200/zhifeng/libero_openvla/models/openvla-7b` on `libero_spatial_no_noops`
+trainable params: 110,828,288 || all params: 7,652,065,472 || trainable%: 1.4483
+04/28 [19:07:21] INFO     | >> [*] Loading existing dataset    data_utils.py:208
+                          statistics from                                       
+                          /projects/p33200/zhifeng/libero_open                  
+                          vla/rlds_datasets/modified_libero_rl                  
+                          ds/libero_spatial_no_noops/1.0.0/dat                  
+                          aset_statistics_c2f8972904ba339e3ed4                  
+                          046e1fbd44ab7b90ac133dda18b3c92a4c44                  
+                          162dc0d1.json.                                        
+
+######################################################################################
+# Loading the following 1 datasets (incl. sampling weight):                         #
+# libero_spatial_no_noops: =================================================1.000000 #
+######################################################################################
+
+                 INFO     | >> [*] Threads per Dataset: [1]       dataset.py:531
+                 INFO     | >> [*] Reads per Dataset: [1]         dataset.py:532
+                 INFO     | >> [*] Constructing datasets...       dataset.py:535
+04/28 [19:07:22] INFO     | >> [*] Applying frame transforms on   dataset.py:575
+                          dataset...                                            
+                 INFO     | >> [*] Saved dataset statistics    data_utils.py:293
+                          file at path                                          
+                          /projects/p33200/zhifeng/libero_open                  
+                          vla/runs/openvla-7b+libero_spatial_n                  
+                          o_noops+b16+lr-0.0005+lora-r32+dropo                  
+                          ut-0.0--official_rlds_8k_lr5e4_b16_s                  
+                          ave1k--image_aug/dataset_statistics.                  
+                          json                                                  
+Saving Model Checkpoint for Step 1000
+04/28 [19:19:39] INFO     | >> [*] Saved dataset statistics    data_utils.py:293
+                          file at path                                          
+                          /projects/p33200/zhifeng/libero_open                  
+                          vla/runs/openvla-7b+libero_spatial_n                  
+                          o_noops+b16+lr-0.0005+lora-r32+dropo                  
+                          ut-0.0--official_rlds_8k_lr5e4_b16_s                  
+                          ave1k--image_aug--1000_chkpt/dataset                  
+                          _statistics.json                                      
+Saved Model Checkpoint for Step 1000 at: /projects/p33200/zhifeng/libero_openvla/runs/openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r32+dropout-0.0--official_rlds_8k_lr5e4_b16_save1k--image_aug--1000_chkpt
+Saving Model Checkpoint for Step 2000
+04/28 [19:31:59] INFO     | >> [*] Saved dataset statistics    data_utils.py:293
+                          file at path                                          
+                          /projects/p33200/zhifeng/libero_open                  
+                          vla/runs/openvla-7b+libero_spatial_n                  
+                          o_noops+b16+lr-0.0005+lora-r32+dropo                  
+                          ut-0.0--official_rlds_8k_lr5e4_b16_s                  
+                          ave1k--image_aug--2000_chkpt/dataset                  
+                          _statistics.json                                      
+Saved Model Checkpoint for Step 2000 at: /projects/p33200/zhifeng/libero_openvla/runs/openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r32+dropout-0.0--official_rlds_8k_lr5e4_b16_save1k--image_aug--2000_chkpt
+Saving Model Checkpoint for Step 3000
+04/28 [19:44:19] INFO     | >> [*] Saved dataset statistics    data_utils.py:293
+                          file at path                                          
+                          /projects/p33200/zhifeng/libero_open                  
+                          vla/runs/openvla-7b+libero_spatial_n                  
+                          o_noops+b16+lr-0.0005+lora-r32+dropo                  
+                          ut-0.0--official_rlds_8k_lr5e4_b16_s                  
+                          ave1k--image_aug--3000_chkpt/dataset                  
+                          _statistics.json                                      
+Saved Model Checkpoint for Step 3000 at: /projects/p33200/zhifeng/libero_openvla/runs/openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r32+dropout-0.0--official_rlds_8k_lr5e4_b16_save1k--image_aug--3000_chkpt
+Saving Model Checkpoint for Step 4000
+04/28 [19:56:41] INFO     | >> [*] Saved dataset statistics    data_utils.py:293
+                          file at path                                          
+                          /projects/p33200/zhifeng/libero_open                  
+                          vla/runs/openvla-7b+libero_spatial_n                  
+                          o_noops+b16+lr-0.0005+lora-r32+dropo                  
+                          ut-0.0--official_rlds_8k_lr5e4_b16_s                  
+                          ave1k--image_aug--4000_chkpt/dataset                  
+                          _statistics.json                                      
+Saved Model Checkpoint for Step 4000 at: /projects/p33200/zhifeng/libero_openvla/runs/openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r32+dropout-0.0--official_rlds_8k_lr5e4_b16_save1k--image_aug--4000_chkpt
+Saving Model Checkpoint for Step 5000
+04/28 [20:09:08] INFO     | >> [*] Saved dataset statistics    data_utils.py:293
+                          file at path                                          
+                          /projects/p33200/zhifeng/libero_open                  
+                          vla/runs/openvla-7b+libero_spatial_n                  
+                          o_noops+b16+lr-0.0005+lora-r32+dropo                  
+                          ut-0.0--official_rlds_8k_lr5e4_b16_s                  
+                          ave1k--image_aug--5000_chkpt/dataset                  
+                          _statistics.json                                      
+Saved Model Checkpoint for Step 5000 at: /projects/p33200/zhifeng/libero_openvla/runs/openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r32+dropout-0.0--official_rlds_8k_lr5e4_b16_save1k--image_aug--5000_chkpt
+Saving Model Checkpoint for Step 6000
+04/28 [20:21:42] INFO     | >> [*] Saved dataset statistics    data_utils.py:293
+                          file at path                                          
+                          /projects/p33200/zhifeng/libero_open                  
+                          vla/runs/openvla-7b+libero_spatial_n                  
+                          o_noops+b16+lr-0.0005+lora-r32+dropo                  
+                          ut-0.0--official_rlds_8k_lr5e4_b16_s                  
+                          ave1k--image_aug--6000_chkpt/dataset                  
+                          _statistics.json                                      
+Saved Model Checkpoint for Step 6000 at: /projects/p33200/zhifeng/libero_openvla/runs/openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r32+dropout-0.0--official_rlds_8k_lr5e4_b16_save1k--image_aug--6000_chkpt
+Saving Model Checkpoint for Step 7000
+04/28 [20:34:12] INFO     | >> [*] Saved dataset statistics    data_utils.py:293
+                          file at path                                          
+                          /projects/p33200/zhifeng/libero_open                  
+                          vla/runs/openvla-7b+libero_spatial_n                  
+                          o_noops+b16+lr-0.0005+lora-r32+dropo                  
+                          ut-0.0--official_rlds_8k_lr5e4_b16_s                  
+                          ave1k--image_aug--7000_chkpt/dataset                  
+                          _statistics.json                                      
+Saved Model Checkpoint for Step 7000 at: /projects/p33200/zhifeng/libero_openvla/runs/openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r32+dropout-0.0--official_rlds_8k_lr5e4_b16_save1k--image_aug--7000_chkpt
+Saving Model Checkpoint for Step 8000
+04/28 [20:46:48] INFO     | >> [*] Saved dataset statistics    data_utils.py:293
+                          file at path                                          
+                          /projects/p33200/zhifeng/libero_open                  
+                          vla/runs/openvla-7b+libero_spatial_n                  
+                          o_noops+b16+lr-0.0005+lora-r32+dropo                  
+                          ut-0.0--official_rlds_8k_lr5e4_b16_s                  
+                          ave1k--image_aug--8000_chkpt/dataset                  
+                          _statistics.json                                      
+Saved Model Checkpoint for Step 8000 at: /projects/p33200/zhifeng/libero_openvla/runs/openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r32+dropout-0.0--official_rlds_8k_lr5e4_b16_save1k--image_aug--8000_chkpt
+Max step 8000 reached! Stopping training...
+[1;34mwandb[0m: 
+[1;34mwandb[0m: You can sync this run to the cloud by running:
+[1;34mwandb[0m: [1mwandb sync /projects/p33200/zhifeng/libero_openvla/tmp/wandb/offline-run-20260428_190722-ozf85oll[0m
+[1;34mwandb[0m: Find logs at: [1;35m../../projects/p33200/zhifeng/libero_openvla/tmp/wandb/offline-run-20260428_190722-ozf85oll/logs[0m
