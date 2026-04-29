@@ -14,17 +14,15 @@ The goal of this project is not only to run OpenVLA on LIBERO, but also to recor
 ## Demos and Qualitative Observations
 ### Representative rollout videos
 
-| Case | Video | Outcome | Description |
+| Stable success | Partial placement failure |
+|---|---|
+| ![Task 2 success](results/videos/5k_examples/task02_success.gif) | ![Task 1 partial placement failure](results/videos/5k_examples/task01_partial_place_fail.gif) |
+| Task 2: successful rollout | Task 1: object is partially placed but not fully inside the target region |
 
-|---|---|---|---|
-
-| Stable success | [`task02_success.mp4`](results/videos/5k_examples/task02_success.mp4) | Success | The policy successfully completes the task. |
-
-| Partial placement failure | [`task01_partial_place_fail.mp4`](results/videos/5k_examples/task01_partial_place_fail.mp4) | Failure | The robot moves the object toward the target, but the object is only partially placed and remains partly outside the target region. |
-
-| Repeated grasp attempt | [`task05_repeated_grasp_fail.mp4`](results/videos/5k_examples/task05_repeated_grasp_fail.mp4) | Failure | The robot repeatedly attempts to grasp the target bowl but fails to secure it. |
-
-| No-motion failure | [`task06_no_motion_fail.mp4`](results/videos/5k_examples/task06_no_motion_fail.mp4) | Failure | The robot shows little or no meaningful motion. |
+| Repeated grasp attempt | No-motion failure |
+|---|---|
+| ![Task 5 repeated grasp fail](results/videos/5k_examples/task05_repeated_grasp_fail.gif) | ![Task 6 no motion fail](results/videos/5k_examples/task06_no_motion_fail.gif) |
+| Task 5: repeated grasp attempts but failed to secure the bowl | Task 6: little or no meaningful motion |
 
 Evaluation was performed on the 5k LoRA checkpoint using LIBERO-Spatial with 5 trials per task.
 
