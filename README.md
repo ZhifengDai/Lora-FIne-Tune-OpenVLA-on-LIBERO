@@ -30,3 +30,10 @@ A preliminary evaluation was conducted on the 5k LoRA checkpoint using LIBERO-Sp
 | 5k | 6 / 50 (12%) | 11 / 50 (22%) | Strong task imbalance; Task 2 achieved 5/5 manual success and Task 7 achieved 3/5. Several tasks showed almost no motion. |
 
 See [`docs/evaluation_notes_5k.md`](docs/evaluation_notes_5k.md) and [`results/task_level_results_5k.csv`](results/task_level_results_5k.csv) for details.
+
+## Training Metrics
+
+The 8k LoRA training run showed stable optimization. The training loss decreased rapidly in the early stage and continued to improve slowly afterward. The L1 action loss also decreased over training, while action accuracy stabilized around 0.35–0.45.
+
+![Training metrics](results/figures/training_metrics_8k_lr5e4_b16.png)
+
