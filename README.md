@@ -50,17 +50,56 @@ The most important qualitative finding is that the 5k checkpoint is not a fully 
 
 The 8k LoRA training run showed stable optimization. The training loss decreased rapidly in the early stage and continued to improve slowly afterward. The L1 action loss also decreased over training, while action accuracy stabilized around 0.35–0.45.
 
-![Training metrics](results/figures/training_metrics_8k_lr5e4_b16.png)
+### Train Loss
 
-### Metric interpretation
+<table>
+<tr>
+<td width="55%">
+<img src="results/figures/train_loss_8k_lr5e4_b16.png" width="100%">
+</td>
+<td width="45%">
 
-| Metric | Meaning | Observation |
-|---|---|---|
-| `train_loss` | Main supervised training objective for action-token prediction | Rapid early decrease followed by slow continued improvement |
-| `l1_loss` | Numeric action prediction error | Overall decreasing trend, suggesting improved action precision |
-| `action_accuracy` | Discrete action-token prediction accuracy | Stabilized around 0.35–0.45 with expected fluctuation |
+The training loss drops sharply at the beginning and then decreases more gradually. This indicates that the model quickly adapts to the LIBERO-Spatial data distribution in the early stage, while later training mainly brings slower incremental improvement.
 
-The 5k and 8k checkpoints come from the same training run. Therefore, the 5k checkpoint corresponds to the curve around step 5000, while the 8k checkpoint corresponds to the end of the curve around step 8000.
+The 5k checkpoint corresponds to the middle-late stage of this curve, while the 8k checkpoint corresponds to the end of training.
+
+</td>
+</tr>
+</table>
+
+### L1 Action Loss
+
+<table>
+<tr>
+<td width="55%">
+<img src="results/figures/l1_loss_8k_lr5e4_b16.png" width="100%">
+</td>
+<td width="45%">
+
+The L1 action loss shows an overall decreasing trend, suggesting that the predicted continuous action values become closer to the ground-truth actions during LoRA fine-tuning.
+
+There is a temporary spike around the middle of training, but the curve later recovers and continues decreasing, indicating that the training process remains stable overall.
+
+</td>
+</tr>
+</table>
+
+### Action Accuracy
+
+<table>
+<tr>
+<td width="55%">
+<img src="results/figures/action_accuracy_8k_lr5e4_b16.png" width="100%">
+</td>
+<td width="45%">
+
+The action-token accuracy quickly rises in the early stage and then fluctuates around approximately 0.35–0.45.
+
+This suggests that the model learns useful action-token patterns, but the prediction remains noisy. The gap between improved training metrics and limited rollout success also shows that lower loss does not directly guarantee robust robot manipulation performance.
+
+</td>
+</tr>
+</table>
 
 ---
 
