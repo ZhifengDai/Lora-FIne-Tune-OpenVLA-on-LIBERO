@@ -142,6 +142,18 @@ Several important patterns were observed:
 
 Overall, the 8k checkpoint suggests that longer LoRA fine-tuning improved partial task grounding and some manipulation behaviors, but it did not fully solve manipulation robustness or cross-task generalization.
 
+### Interpretation Based on Checkpoint Comparison
+
+The 8k checkpoint improves the official success rate over the 5k checkpoint, increasing from 6/50 (12.0%) to 14/80 (17.5%). Manual inspection also shows a slight improvement from 11/50 (22.0%) to 19/80 (23.75%). This suggests that longer LoRA fine-tuning improves some aspects of action prediction and task execution.
+
+However, the improvement is not uniform across tasks. The 8k checkpoint performs strongly on some tasks, such as Task 6 with 7/8 manual success, and also produces successful cases on the harder Task 5. At the same time, Tasks 3, 7, and 10 still show little or no meaningful motion. This indicates strong task imbalance rather than general improvement across all LIBERO-Spatial tasks.
+
+A likely explanation is that the 5k checkpoint is less converged and more exploratory: it often attempts to move or grasp, but lacks manipulation precision. The 8k checkpoint is more converged and achieves lower training loss, but may become more conservative or task-biased under some visual-language states. Since the LoRA dropout was set to 0.0, overfitting to specific visual states may also contribute to no-motion or action-collapse behavior.
+
+In addition, the gap between official success and manual success suggests that the LIBERO/robosuite predicate-based evaluator can be stricter than visual inspection. Some rollouts that appear visually successful may fail due to small position errors, stability checks, or timeout constraints.
+
+Overall, the 8k checkpoint provides modest quantitative improvement but does not fully solve robust manipulation. The next step is to evaluate 6k and 7k checkpoints to determine whether an intermediate checkpoint better balances exploration, grasp precision, and task coverage.
+
 ---
 
 ## Project Overview
