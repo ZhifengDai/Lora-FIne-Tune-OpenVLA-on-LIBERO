@@ -12,25 +12,24 @@ The goal of this project is not only to run OpenVLA on LIBERO, but also to recor
 ---
 
 ## Demos and Qualitative Observations
+### Representative rollout videos
+
+| Case | Video | Outcome | Description |
+
+|---|---|---|---|
+
+| Stable success | [`task02_success.mp4`](results/videos/5k_examples/task02_success.mp4) | Success | The policy successfully completes the task. |
+
+| Partial placement failure | [`task01_partial_place_fail.mp4`](results/videos/5k_examples/task01_partial_place_fail.mp4) | Failure | The robot moves the object toward the target, but the object is only partially placed and remains partly outside the target region. |
+
+| Repeated grasp attempt | [`task05_repeated_grasp_fail.mp4`](results/videos/5k_examples/task05_repeated_grasp_fail.mp4) | Failure | The robot repeatedly attempts to grasp the target bowl but fails to secure it. |
+
+| No-motion failure | [`task06_no_motion_fail.mp4`](results/videos/5k_examples/task06_no_motion_fail.mp4) | Failure | The robot shows little or no meaningful motion. |
 
 Evaluation was performed on the 5k LoRA checkpoint using LIBERO-Spatial with 5 trials per task.
 
 Several rollouts showed meaningful learned behavior, while others showed little or no motion. Manual video inspection was used in addition to the official simulator success metric because some visually successful rollouts were marked as failures by the strict automatic predicate evaluator.
 
-### Key observations from 5k checkpoint
-
-| Task ID | Manual Success | Qualitative Behavior |
-|---:|---:|---|
-| 1 | 1 / 5 | Mostly no motion; one successful rollout |
-| 2 | 5 / 5 | Stable success across all five trials |
-| 3 | 0 / 5 | Almost no meaningful motion |
-| 4 | 1 / 5 | Mostly no motion; one successful rollout |
-| 5 | 0 / 5 | Repeatedly attempted to grasp the bowl in the cabinet, but missed the grasp |
-| 6 | 0 / 5 | Almost no meaningful motion |
-| 7 | 3 / 5 | Partially stable successful behavior |
-| 8 | 1 / 5 | Mostly no motion; one successful rollout |
-| 9 | 0 / 5 | Almost no meaningful motion |
-| 10 | 0 / 5 | Almost no meaningful motion |
 
 The most important qualitative finding is that the 5k checkpoint is not a fully failed policy. It shows partial vision-language-action grounding on some tasks, especially Task 2 and Task 7. However, the behavior is highly task-dependent and not yet a robust general LIBERO-Spatial policy.
 
@@ -121,7 +120,6 @@ Key components:
 Large files such as model weights, RLDS datasets, checkpoints, rollout videos, and Singularity images are not included in this repository.
 
 ---
-implementation="sdpa"
 
 ##Current Status
 
