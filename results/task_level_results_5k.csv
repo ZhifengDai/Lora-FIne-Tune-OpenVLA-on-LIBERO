@@ -1,0 +1,11 @@
+checkpoint,task_id,manual_success,total_trials,manual_success_rate,behavior_summary,failure_mode
+ckpt_5000,1,1,5,0.20,"Mostly no motion; one rollout completed the task successfully.","mostly_no_motion"
+ckpt_5000,2,5,5,1.00,"Stable success across all five trials.","success"
+ckpt_5000,3,0,5,0.00,"Almost no meaningful motion observed.","no_motion"
+ckpt_5000,4,1,5,0.20,"Mostly no motion; one rollout completed the task successfully.","mostly_no_motion"
+ckpt_5000,5,0,5,0.00,"The robot repeatedly attempted to grasp the small bowl inside the cabinet, but failed to complete a stable grasp.","missed_grasp"
+ckpt_5000,6,0,5,0.00,"Almost no meaningful motion observed.","no_motion"
+ckpt_5000,7,3,5,0.60,"Partially stable behavior with three successful rollouts.","partial_success"
+ckpt_5000,8,1,5,0.20,"Mostly no motion; one rollout completed the task successfully.","mostly_no_motion"
+ckpt_5000,9,0,5,0.00,"Almost no meaningful motion observed.","no_motion"
+ckpt_5000,10,0,5,0.00,"Almost no meaningful motion observed.","no_motion"

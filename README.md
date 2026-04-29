@@ -20,3 +20,13 @@ logs/      Selected training logs
 results/   Checkpoint summaries and evaluation tables
 docker/    Docker/Singularity environment files
 
+
+## Preliminary Evaluation Result
+
+A preliminary evaluation was conducted on the 5k LoRA checkpoint using LIBERO-Spatial with 5 trials per task.
+
+| Checkpoint | Official Success | Manual Success | Notes |
+|---|---:|---:|---|
+| 5k | 6 / 50 (12%) | 11 / 50 (22%) | Strong task imbalance; Task 2 achieved 5/5 manual success and Task 7 achieved 3/5. Several tasks showed almost no motion. |
+
+See [`docs/evaluation_notes_5k.md`](docs/evaluation_notes_5k.md) and [`results/task_level_results_5k.csv`](results/task_level_results_5k.csv) for details.

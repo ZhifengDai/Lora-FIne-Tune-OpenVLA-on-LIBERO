@@ -1,0 +1,2 @@
+checkpoint,lr,batch_size,lora_rank,lora_dropout,steps,trials_per_task,total_rollouts,official_success,official_success_rate,manual_success,manual_success_rate,render_backend,notes
+ckpt_5000,5e-4,16,32,0.0,5000,5,50,6,0.12,11,0.22,OSMesa,"Strong task imbalance. Task 2 achieved 5/5 manual success and Task 7 achieved 3/5. Tasks 3, 6, 9, and 10 showed almost no motion. Task 5 repeatedly attempted grasping the bowl in the cabinet but failed to complete the grasp. Official success count was lower than manual inspection due to strict predicate-based evaluation."
