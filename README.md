@@ -121,20 +121,8 @@ Key components:
 Large files such as model weights, RLDS datasets, checkpoints, rollout videos, and Singularity images are not included in this repository.
 
 ---
+implementation="sdpa"
 
-## Issues & Fixes Log
-
-During reproduction, I encountered and fixed several practical issues.
-
-### FlashAttention2 import error
-
-OpenVLA evaluation attempted to load the model with FlashAttention2 enabled, but the environment did not have `flash_attn` installed.
-
-**Fix:** switched the attention implementation to SDPA.
-
-```python
-attn_implementation="sdpa"
-```
 ##Current Status
 
 * 8k LoRA training completed.
