@@ -12,7 +12,20 @@ The goal of this project is not only to run OpenVLA on LIBERO, but also to recor
 ---
 
 ## Demos and Qualitative Observations
-### Representative rollout videos
+
+### Representative rollout GIFs from 8k checkpoint
+
+| Task 5 success | Task 9 shaking success |
+|---|---|
+| ![Task 5 success](results/videos/8k_examples/task05_success.gif) | ![Task 9 shaking success](results/videos/8k_examples/task09_shaking_success.gif) |
+| Task 5: a harder manipulation case that succeeds at 8k | Task 9: unstable shaking behavior followed by successful completion |
+
+| Task 2 placement failure | Task 2 grasp/pick failure |
+|---|---|
+| ![Task 2 put failure](results/videos/8k_examples/task02_put_failed_fail.gif) | ![Task 2 pick failure](results/videos/8k_examples/task02_pick_failed_fail.gif) |
+| Task 2: object moved toward the goal but failed final placement | Task 2: failed grasp or pickup despite task attempt |
+
+### Representative rollout videos from 5k checkpoint
 
 | Stable success | Partial placement failure |
 |---|---|
@@ -53,30 +66,42 @@ The 5k and 8k checkpoints come from the same training run. Therefore, the 5k che
 
 ## Evaluation Results
 
-### Overall result
+### Overall checkpoint comparison
 
-| Checkpoint | Trials per Task | Total Rollouts | Official Success | Manual Success | Rendering |
+| Checkpoint | Trials per Task | Total Rollouts | Official Success | Manual Success | Key Observation |
 |---|---:|---:|---:|---:|---|
-| 5k | 5 | 50 | 6 / 50 (12%) | 11 / 50 (22%) | OSMesa |
+| 5k | 5 | 50 | 6 / 50 (12.0%) | 11 / 50 (22.0%) | More exploratory behavior; Task 2 was strong, but many tasks remained unstable |
+| 8k | 8 | 80 | 14 / 80 (17.5%) | 19 / 80 (23.75%) | Higher official success rate, stronger behavior on some tasks, but still highly task-dependent |
 
-The gap between official and manual success indicates that the official predicate-based evaluator can be stricter than qualitative video inspection. Some rollouts that appeared successful from visual inspection were still marked as failed by the simulator.
+The 8k checkpoint improved the official success rate from **12.0% to 17.5%** and slightly improved the manually verified success rate from **22.0% to 23.75%**. However, the improvement was not uniform across tasks. Some tasks became stronger, while others still showed almost no meaningful motion.
 
-### Task-level result
+### 8k task-level manual evaluation
 
-| Checkpoint | Task ID | Manual Success | Manual Success Rate | Failure Mode |
-|---|---:|---:|---:|---|
-| 5k | 1 | 1 / 5 | 20% | Mostly no motion |
-| 5k | 2 | 5 / 5 | 100% | Successful |
-| 5k | 3 | 0 / 5 | 0% | No motion |
-| 5k | 4 | 1 / 5 | 20% | Mostly no motion |
-| 5k | 5 | 0 / 5 | 0% | Missed grasp |
-| 5k | 6 | 0 / 5 | 0% | No motion |
-| 5k | 7 | 3 / 5 | 60% | Partial success |
-| 5k | 8 | 1 / 5 | 20% | Mostly no motion |
-| 5k | 9 | 0 / 5 | 0% | No motion |
-| 5k | 10 | 0 / 5 | 0% | No motion |
+| Task ID | Manual Success | Success Rate | Observation |
+|---:|---:|---:|---|
+| 1 | 3 / 8 | 37.5% | Some successful rollouts, but behavior remains unstable |
+| 2 | 2 / 8 | 25.0% | Lower than the 5k checkpoint; more failures appeared |
+| 3 | 0 / 8 | 0.0% | All eight rollouts showed little or no meaningful motion |
+| 4 | 2 / 8 | 25.0% | Occasional success |
+| 5 | 3 / 8 | 37.5% | Harder task, but successful cases appeared at 8k |
+| 6 | 7 / 8 | 87.5% | Best-performing task at 8k |
+| 7 | 0 / 8 | 0.0% | Mostly failed or no-motion behavior |
+| 8 | 1 / 8 | 12.5% | Occasional success |
+| 9 | 1 / 8 | 12.5% | One success after unstable shaking behavior |
+| 10 | 0 / 8 | 0.0% | Mostly failed or no-motion behavior |
 
-Detailed notes are available in [`docs/evaluation_notes_5k.md`](docs/evaluation_notes_5k.md), and structured results are saved in [`results/evaluation_table.csv`](results/evaluation_table.csv) and [`results/task_level_results_5k.csv`](results/task_level_results_5k.csv).
+### Interpretation
+
+The 8k checkpoint shows a modest improvement over the 5k checkpoint in terms of official success rate, but the qualitative behavior remains uneven.
+
+Several important patterns were observed:
+
+- **Improved task-specific behavior:** Task 6 achieved 7/8 manual success, and Task 5, a harder manipulation task, showed successful cases at 8k.
+- **More attempts before failure:** Compared with earlier checkpoints, more failed rollouts showed meaningful attempts, such as repeated grasping or shaking before failure.
+- **Persistent no-motion failures:** Some tasks, especially Task 3, Task 7, and Task 10, still showed little or no meaningful motion.
+- **Strong task imbalance:** The model did not improve uniformly across all LIBERO-Spatial tasks. Success was concentrated in a subset of tasks.
+
+Overall, the 8k checkpoint suggests that longer LoRA fine-tuning improved partial task grounding and some manipulation behaviors, but it did not fully solve manipulation robustness or cross-task generalization.
 
 ---
 
@@ -119,10 +144,13 @@ Large files such as model weights, RLDS datasets, checkpoints, rollout videos, a
 
 ---
 
-##Current Status
+## Current Status
 
-* 8k LoRA training completed.
-* Checkpoints from 1k to 8k were saved.
-* 5k checkpoint evaluation completed with 50 rollout videos.
-* 5k checkpoint achieved 6/50 official success and 11/50 manual success.
-* 8k checkpoint evaluation is planned / in progress for comparison.
+- 8k LoRA training completed.
+- Checkpoints from 1k to 8k were saved.
+- 5k checkpoint evaluation completed with 50 rollout videos.
+- 8k checkpoint evaluation completed with 80 rollout videos.
+- 5k checkpoint achieved 6/50 official success and 11/50 manual success.
+- 8k checkpoint achieved 14/80 official success and 19/80 manual success.
+- Representative 5k and 8k rollout GIFs were added to the README.
+- Next step: evaluate 6k and 7k checkpoints to identify whether an intermediate checkpoint provides better task balance.
