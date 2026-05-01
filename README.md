@@ -10,6 +10,43 @@ This repository documents my reproduction and analysis of LoRA fine-tuning **Ope
 The goal of this project is not only to run OpenVLA on LIBERO, but also to record the full reproduction process: environment setup, LoRA fine-tuning, checkpoint saving, rollout evaluation, video inspection, failure mode analysis, and debugging on a GPU cluster.
 
 ---
+### Dropout Ablation: LoRA Dropout 0.0 vs 0.1
+
+To evaluate whether LoRA dropout improves OpenVLA fine-tuning stability, I ran an additional 8k-step experiment with `lora_dropout=0.1` while keeping the other settings unchanged: `learning_rate=5e-4`, `batch_size=16`, `lora_rank=32`, and `image_aug=True`.
+
+| Setting | Official Success | Manual Success | Key Observation |
+|---|---:|---:|---|
+| LoRA dropout = 0.0 | 14 / 80 (17.5%) | 19 / 80 (23.75%) | Some harder-task successes, but strong task imbalance |
+| LoRA dropout = 0.1 | 18 / 80 (22.5%) | 22 / 80 (27.5%) | Higher overall success, stronger Task 1/2/4 performance, but still task-dependent |
+
+The dropout=0.1 run improved both official and manually verified success rates. The official success rate increased from **17.5% to 22.5%**, and the manually verified success rate increased from **23.75% to 27.5%**. This suggests that LoRA dropout helped improve average rollout robustness.
+
+### Task-Level Result for LoRA Dropout 0.1
+
+| Task ID | Manual Success | Success Rate | Observation |
+|---:|---:|---:|---|
+| 1 | 6 / 8 | 75.0% | Strong improvement with multiple successful rollouts |
+| 2 | 5 / 8 | 62.5% | Improved after manual inspection; several official failures were visually successful |
+| 3 | 1 / 8 | 12.5% | Mostly failed, but no longer completely zero-success |
+| 4 | 7 / 8 | 87.5% | Best-performing task under dropout=0.1 |
+| 5 | 0 / 8 | 0.0% | Still failed; harder manipulation behavior was not improved |
+| 6 | 2 / 8 | 25.0% | Some success, but weaker than the dropout=0.0 checkpoint |
+| 7 | 0 / 8 | 0.0% | Persistent failure / no-motion behavior |
+| 8 | 0 / 8 | 0.0% | Persistent failure / no-motion behavior |
+| 9 | 1 / 8 | 12.5% | One successful rollout |
+| 10 | 0 / 8 | 0.0% | Persistent failure / no-motion behavior |
+
+### Interpretation of the Dropout Result
+
+Adding `lora_dropout=0.1` improved the overall success rate compared with the dropout=0.0 baseline. This suggests that dropout helped regularize the LoRA adapter and reduced overfitting to specific visual-action patterns in some tasks.
+
+However, the improvement was not uniform across all LIBERO-Spatial tasks. Task 1, Task 2, and Task 4 became noticeably stronger, while Task 5 and Task 6 became weaker compared with the dropout=0.0 checkpoint. This indicates that dropout changed the task-level behavior distribution rather than simply improving every task.
+
+One possible explanation is that dropout made the policy less dependent on a small set of task-specific visual or action features. This helped reduce conservative or no-motion behavior in some tasks, improving average robustness. At the same time, it may have weakened some precise task-specific manipulation patterns that were useful for harder or previously well-performing tasks.
+
+Tasks 7, 8, and 10 still showed 0/8 manual success, indicating that LoRA dropout alone does not fully solve cross-task generalization or manipulation robustness. Some remaining failures may come from insufficient visual-language grounding, unstable action-token prediction, dataset imbalance, or the difficulty of precise object manipulation in LIBERO.
+
+Overall, `lora_dropout=0.1` improved average success rate, but it did not produce a uniform improvement across all tasks. Future work should evaluate intermediate checkpoints, test smaller dropout values such as `0.05`, and separately analyze no-motion failures versus attempt-but-fail behaviors.
 
 ## Demos and Qualitative Observations
 
@@ -197,11 +234,10 @@ Large files such as model weights, RLDS datasets, checkpoints, rollout videos, a
 
 ## Current Status
 
-- 8k LoRA training completed.
-- Checkpoints from 1k to 8k were saved.
-- 5k checkpoint evaluation completed with 50 rollout videos.
-- 8k checkpoint evaluation completed with 80 rollout videos.
-- 5k checkpoint achieved 6/50 official success and 11/50 manual success.
-- 8k checkpoint achieved 14/80 official success and 19/80 manual success.
+- Completed the original 8k LoRA fine-tuning run with `lora_dropout=0.0`.
+- Completed an additional 8k LoRA dropout ablation run with `lora_dropout=0.1`.
+- Evaluated 5k and 8k checkpoints using LIBERO rollout generation and manual video inspection.
+- The original dropout=0.0 8k checkpoint achieved 14/80 official success and 19/80 manual success.
+- The dropout=0.1 8k checkpoint improved to 18/80 official success and 22/80 manual success.
 - Representative 5k and 8k rollout GIFs were added to the README.
-- Next step: evaluate 6k and 7k checkpoints to identify whether an intermediate checkpoint provides better task balance.
+- Next step: evaluate intermediate checkpoints and test smaller dropout values such as 0.05.
