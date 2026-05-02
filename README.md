@@ -1,14 +1,3 @@
-cd /Users/zhifengdai/Desktop/github_export
-
-python3 - <<'PY'
-from pathlib import Path
-
-readme = """# LoRA Fine-Tuning OpenVLA on LIBERO: A Reproduction Journey
-
-This repository documents my reproduction and analysis of LoRA fine-tuning **OpenVLA-7B** on the **LIBERO-Spatial** robot manipulation benchmark using the official modified LIBERO RLDS dataset.
-
-The goal of this project is not only to run OpenVLA on LIBERO, but also to record the full reproduction process: environment setup, LoRA fine-tuning, checkpoint saving, rollout evaluation, video inspection, failure mode analysis, and debugging on a GPU cluster.
-
 ---
 ### Dropout Ablation: LoRA Dropout 0.0 vs 0.1
 
