@@ -1,4 +1,3 @@
----
 ### Dropout Ablation: LoRA Dropout 0.0 vs 0.1
 
 To evaluate whether LoRA dropout improves OpenVLA fine-tuning stability, I ran an additional 8k-step experiment with `lora_dropout=0.1` while keeping the other settings unchanged: `learning_rate=5e-4`, `batch_size=16`, `lora_rank=32`, and `image_aug=True`.
